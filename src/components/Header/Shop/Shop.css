@@ -1,0 +1,13 @@
+.shop{
+    display: flex;
+}
+.products{
+    flex: 3;
+    border-right: 1px solid lightgray;
+    padding: .5rem;
+    margin-left: 10rem;
+}
+.cart{
+    flex: 1;
+    padding: .5rem;
+}

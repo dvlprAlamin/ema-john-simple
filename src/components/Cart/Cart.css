@@ -1,0 +1,24 @@
+.cart h2{
+    text-align: center;
+}
+table{
+    width: 100%;
+    margin: 0 auto;
+}
+table, td, th{
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+td, th{
+    padding:.3rem .5rem;
+}
+td{
+    text-align: right;
+}
+th{
+    text-align: left;
+}
+.grand-total{
+    color: #b12704;
+    font-size: 1.3rem;
+}
