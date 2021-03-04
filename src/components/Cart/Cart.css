@@ -22,3 +22,12 @@ th{
     color: #b12704;
     font-size: 1.3rem;
 }
+.review-btn{
+    height: 30px;
+    width: 200px;
+    background: #f0c14b;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: 0;
+    cursor: pointer;
+}

@@ -16,6 +16,7 @@ const Shop = () => {
                 {
                     first10.map(productInfo => <Product 
                         product={productInfo}
+                        key={productInfo.key}
                         updateHandleCart={updateHandleCart}
                     ></Product>)
                 }
