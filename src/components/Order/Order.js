@@ -17,13 +17,10 @@ const Order = () => {
         })
         setCart(products);
     }, [])
-    // const [afterRemove, setAfterRemove] = useState(cart)
-    // console.log(afterRemove);
     const handleRemove =(key) => {
         setCart(cart.filter(product => product.key !== key))
         removeFromDatabaseCart(key);
     }
-    // console.log(afterRemove);
     const totalItem = cart.reduce((total, product) => total + product.quantity,0)
     return (
         <div className="order">

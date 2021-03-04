@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css'
 const Cart = ({cart,shop}) => {
-    const total = cart.reduce((total, item) => total + item.price, 0);
+    const total = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     let shipping = 0;
     total > 50 ? shipping = 0 : total > 20 ? shipping = 6.99 : total > 0 && (shipping = 12.99);
     const tax = total / 10;
