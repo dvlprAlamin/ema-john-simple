@@ -1,0 +1,14 @@
+.order{
+    display: flex;
+}
+.ordered-items{
+    flex:2;
+    margin: 1rem 1rem 1rem 4rem;
+}
+.cart{
+    flex:1;
+}
+.single-item{
+    border-bottom: 1px solid lightgray;
+    padding: 1rem 0;
+}

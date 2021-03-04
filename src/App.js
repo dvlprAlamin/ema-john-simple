@@ -11,6 +11,7 @@ import {
 import Inventory from './components/Inventory/Inventory';
 import Order from './components/Order/Order';
 import Page404 from './components/Page404/Page404';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 function App() {
   return (
     <div>
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <Shop />
+          </Route>
+          <Route path="/product/:productKey">
+            <ProductDetails/>
           </Route>
           <Route path="*">
             <Page404 />

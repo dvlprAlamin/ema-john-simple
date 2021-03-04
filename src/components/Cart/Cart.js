@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Cart.css'
-const Cart = (props) => {
-    const cart = props.cart;
+const Cart = ({cart,shop}) => {
     const total = cart.reduce((total, item) => total + item.price, 0);
     let shipping = 0;
     total > 50 ? shipping = 0 : total > 20 ? shipping = 6.99 : total > 0 && (shipping = 12.99);
@@ -43,7 +43,7 @@ const Cart = (props) => {
                     </tr>
                 </tfoot>
             </table>
-            <button className='review-btn'>Review your order</button>
+            {shop ? <Link to="/order"><button className='color-btn'>Review your order</button></Link> : <Link to="/proceed"><button className='color-btn'>Place order</button></Link>}
         </div>
     );
 };
