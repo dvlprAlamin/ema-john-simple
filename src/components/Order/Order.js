@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import fakeData from '../../fakeData';
-import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import OrderedItem from '../OrderedItem/OrderedItem';
 import './Order.css'
@@ -22,6 +22,10 @@ const Order = () => {
         removeFromDatabaseCart(key);
     }
     const totalItem = cart.reduce((total, product) => total + product.quantity,0)
+    const placeOrderHandler = () => {
+        setCart([])
+        processOrder();
+    }
     return (
         <div className="order">
         <div className="ordered-items">
@@ -35,7 +39,7 @@ const Order = () => {
             }
         </div>
         <div className="cart">
-            <Cart cart={cart}/>
+            <Cart placeOrderHandler={placeOrderHandler} cart={cart}/>
         </div>
         </div>
     );

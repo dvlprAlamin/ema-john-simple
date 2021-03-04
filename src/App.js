@@ -12,6 +12,7 @@ import Inventory from './components/Inventory/Inventory';
 import Order from './components/Order/Order';
 import Page404 from './components/Page404/Page404';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import Proceed from './components/Proceed/Proceed';
 function App() {
   return (
     <div>
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/inventory">
             <Inventory />
+          </Route>
+          <Route path="/proceed">
+            <Proceed/>
           </Route>
           <Route exact path="/">
             <Shop />
