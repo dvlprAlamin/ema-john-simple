@@ -4,9 +4,7 @@ import Shop from './components/Header/Shop/Shop';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  useParams
+  Route
 } from "react-router-dom";
 import Inventory from './components/Inventory/Inventory';
 import Order from './components/Order/Order';
@@ -16,8 +14,9 @@ import Proceed from './components/Proceed/Proceed';
 function App() {
   return (
     <div>
-      <Header></Header>
+      
       <Router>
+        <Header></Header>
         <Switch>
           <Route path="/shop">
             <Shop />
