@@ -11,9 +11,15 @@ import Order from './components/Order/Order';
 import Page404 from './components/Page404/Page404';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Proceed from './components/Proceed/Proceed';
+import Login from './components/Login/Login';
+import { createContext, useState } from 'react';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+export const AuthProvider = createContext();
 function App() {
+  const [loggedUser, setLoggedUser] = useState(false);
   return (
-    <div>
+    <AuthProvider.Provider value={[loggedUser, setLoggedUser]}>
       
       <Router>
         <Header></Header>
@@ -24,12 +30,18 @@ function App() {
           <Route path="/order">
             <Order />
           </Route>
-          <Route path="/inventory">
+          {/* <Route path="/inventory">
             <Inventory />
-          </Route>
+          </Route> */}
           <Route path="/proceed">
             <Proceed/>
           </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <PrivateRoute path="/inventory">
+              <Inventory />
+          </PrivateRoute>
           <Route exact path="/">
             <Shop />
           </Route>
@@ -41,7 +53,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </AuthProvider.Provider>
   )
 }
 

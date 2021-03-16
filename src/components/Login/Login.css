@@ -1,0 +1,10 @@
+.tab-container{
+    height: 55vh;
+    width: 500px;
+    margin:50px auto;
+    background-color: grey;
+}
+.tab-items{
+    display: flex;
+    justify-content: center;
+}
