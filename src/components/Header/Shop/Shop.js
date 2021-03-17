@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Shop.css';
 import data from '../../../fakeData';
 import Product from '../../Product/Product';
@@ -8,7 +8,6 @@ import fakeData from '../../../fakeData';
 const Shop = () => {
     const first10 = data.slice(0,10);
     const [cart, setCart] = useState([])
-    
     const updateHandleCart = (product) => {
         const matchProduct = cart.find(pd => pd.key === product.key)
         let count = 1;

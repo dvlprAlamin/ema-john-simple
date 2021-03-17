@@ -15,13 +15,14 @@ import Login from './components/Login/Login';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import SignUp from './components/SignUp/SignUp';
+import { AuthenticationProvider } from './components/AuthenticationContext/AuthenticationContext';
 
-export const AuthProvider = createContext();
+// export const AuthProvider = createContext();
 function App() {
-  const [loggedUser, setLoggedUser] = useState(false);
+
   return (
-    <AuthProvider.Provider value={[loggedUser, setLoggedUser]}>
-      
+    // <AuthProvider.Provider value={[loggedUser, setLoggedUser]}>
+      <AuthenticationProvider>
       <Router>
         <Header></Header>
         <Switch>
@@ -60,7 +61,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </AuthProvider.Provider>
+      </AuthenticationProvider>
   )
 }
 

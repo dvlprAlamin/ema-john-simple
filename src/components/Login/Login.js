@@ -4,7 +4,7 @@ import "firebase/auth";
 import { useState } from 'react';
 import { firebaseConfig } from './firebaseconfig';
 import './Login.css'
-import { AuthProvider } from '../../App';
+// import { AuthProvider } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
 
     const { from } = location.state || { from: { pathname: "/" } };
 
-    const [loggedUser, setLoggedUser] = useContext(AuthProvider);
+    // const [loggedUser, setLoggedUser] = useContext(AuthProvider);
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const fbProvider = new firebase.auth.FacebookAuthProvider();
     const [userauth, setUserauth] = useState({
@@ -36,8 +36,8 @@ const Login = () => {
                     email: '',
                     image: user.photoURL
                 });
-                setLoggedUser(true);
-            history.replace(from);
+                // setLoggedUser(true);
+            // history.replace(from);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -108,8 +108,8 @@ const Login = () => {
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                setLoggedUser(true);
-                history.replace(from);
+                // setLoggedUser(true);
+                // history.replace(from);
                 console.log(user);
             })
             .catch((error) => {

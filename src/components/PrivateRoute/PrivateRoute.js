@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router';
-import { AuthProvider } from '../../App';
+import { AuthenticationContext } from '../AuthenticationContext/AuthenticationContext';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const [loggedUser] = useContext(AuthProvider)
+    const {loggedUser, setLoggedUser} = useContext(AuthenticationContext)
     return (
       <Route
         {...rest}
