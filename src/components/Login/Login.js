@@ -35,7 +35,9 @@ const Login = () => {
                     name: user.displayName,
                     email: '',
                     image: user.photoURL
-                })
+                });
+                setLoggedUser(true);
+            history.replace(from);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -52,7 +54,8 @@ const Login = () => {
                 name: '',
                 email: '',
                 image: ''
-            })
+            });
+            
         }).catch((error) => {
             // An error happened.
         });
@@ -149,10 +152,10 @@ const Login = () => {
                         <button onClick={signInHandler} variant="contained" color="secondary">Google</button>}
                     <button onClick={fbSignInHandler} variant="contained" color="primary">Facebook</button>
                     <br />
-                    {userauth.isSignIn && <div>
+                    {/* {userauth.isSignIn && <div>
                         <h1>Welcome {userauth.name}</h1>
                         <img src={userauth.image} alt="" />
-                    </div>}
+                    </div>} */}
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@ import Proceed from './components/Proceed/Proceed';
 import Login from './components/Login/Login';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import SignUp from './components/SignUp/SignUp';
 
 export const AuthProvider = createContext();
 function App() {
@@ -33,14 +34,20 @@ function App() {
           {/* <Route path="/inventory">
             <Inventory />
           </Route> */}
-          <Route path="/proceed">
-            <Proceed/>
-          </Route>
+          {/* <Route path="/proceed">
+            
+          </Route> */}
           <Route path="/login">
             <Login/>
           </Route>
+          <Route path="/signup">
+            <SignUp/>
+          </Route>
           <PrivateRoute path="/inventory">
               <Inventory />
+          </PrivateRoute>
+          <PrivateRoute path="/proceed">
+            <Proceed/>
           </PrivateRoute>
           <Route exact path="/">
             <Shop />
