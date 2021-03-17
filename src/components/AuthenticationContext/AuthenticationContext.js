@@ -10,8 +10,8 @@ export const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = (props) => {
     const [loggedUser, setLoggedUser] = useState(false);
-    // const history = useHistory();
-    // const location = useLocation();
+        // const history = useHistory();
+        // const location = useLocation();
 
     // const { from } = location.state || { from: { pathname: "/" } };
 
@@ -23,7 +23,7 @@ export const AuthenticationProvider = (props) => {
         email: '',
         image: ''
     })
-    const googleSignInHandler = () => {
+    const googleSignInHandler = (location) => {
         firebase.auth()
             .signInWithPopup(googleProvider)
             .then((result) => {
@@ -36,8 +36,8 @@ export const AuthenticationProvider = (props) => {
                     email: '',
                     image: user.photoURL
                 });
-                // setLoggedUser(true);
-            // history.replace(from);
+                setLoggedUser(true);
+                // history.replace(from);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -45,20 +45,6 @@ export const AuthenticationProvider = (props) => {
                 const credential = error.credential;
             });
         // console.log('clicked');
-    }
-    const signOutHandler = () => {
-        firebase.auth().signOut().then(() => {
-            console.log('sign out success');
-            setUserauth({
-                isSignIn: false,
-                name: '',
-                email: '',
-                image: ''
-            });
-            
-        }).catch((error) => {
-            // An error happened.
-        });
     }
 
     // facebook sign in 
@@ -79,6 +65,20 @@ export const AuthenticationProvider = (props) => {
                 const credential = error.credential;
                 console.log(errorMessage);
             });
+    }
+    const signOutHandler = () => {
+        firebase.auth().signOut().then(() => {
+            console.log('sign out success');
+            setUserauth({
+                isSignIn: false,
+                name: '',
+                email: '',
+                image: ''
+            });
+            
+        }).catch((error) => {
+            // An error happened.
+        });
     }
 
     const [user, setUser] = useState({

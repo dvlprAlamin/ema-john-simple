@@ -4,25 +4,31 @@ import Shop from './components/Header/Shop/Shop';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  useHistory,
+  useLocation
 } from "react-router-dom";
 import Inventory from './components/Inventory/Inventory';
 import Order from './components/Order/Order';
 import Page404 from './components/Page404/Page404';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Proceed from './components/Proceed/Proceed';
-import Login from './components/Login/Login';
-import { createContext, useState } from 'react';
+import LoginSignUp from './components/LoginSignUp/LoginSignUp';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import SignUp from './components/SignUp/SignUp';
-import { AuthenticationProvider } from './components/AuthenticationContext/AuthenticationContext';
+import SignUp from './components/LoginSignUp/LoginSignUp';
+import Footer from './components/Footer/Footer';
+import { createContext, useState } from 'react';
 
-// export const AuthProvider = createContext();
+export const UserContext = createContext()
 function App() {
-
+  const [loggedUser, setLoggedUser] = useState(false);
+  const [user, setUser] = useState({
+    name:'',
+    email:'',
+    password:''
+  })
   return (
-    // <AuthProvider.Provider value={[loggedUser, setLoggedUser]}>
-      <AuthenticationProvider>
+    <UserContext.Provider value={{loggedUser,setLoggedUser,user,setUser}}>
       <Router>
         <Header></Header>
         <Switch>
@@ -39,31 +45,32 @@ function App() {
             
           </Route> */}
           <Route path="/login">
-            <Login/>
+            <LoginSignUp/>
           </Route>
           <Route path="/signup">
-            <SignUp/>
+          <LoginSignUp/>
           </Route>
           <PrivateRoute path="/inventory">
-              <Inventory />
+            <Inventory />
           </PrivateRoute>
           <PrivateRoute path="/proceed">
-            <Proceed/>
+            <Proceed />
           </PrivateRoute>
           <Route exact path="/">
             <Shop />
           </Route>
           <Route path="/product/:productKey">
-            <ProductDetails/>
+            <ProductDetails />
           </Route>
           <Route path="*">
             <Page404 />
           </Route>
         </Switch>
+        <Footer />
       </Router>
-      </AuthenticationProvider>
+    </UserContext.Provider>
   )
 }
 
 
-export default App
+export default App;

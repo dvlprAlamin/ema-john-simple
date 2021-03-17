@@ -1,11 +1,19 @@
+import { Button } from '@material-ui/core';
 import React, { useContext } from 'react';
-import { Router } from 'react-router';
 import { Link } from 'react-router-dom';
-// import { AuthProvider } from '../../App';
+import { UserContext } from '../../App';
 import logo from '../../images/logo.png';
+import { signOutHandler } from '../LoginManager/LoginManager';
 import './Header.css';
 const Header = () => {
-    // const [loggedUser] = useContext(AuthProvider);
+    const {loggedUser,setLoggedUser,setUser} = useContext(UserContext);
+    const signOut = () => {
+        signOutHandler()
+        .then(res => {
+            setLoggedUser(false);
+            setUser(res)
+        })
+    }
     return (
         <div className="header">
             <div className="logo">
@@ -15,7 +23,19 @@ const Header = () => {
                 <Link to="/">Home</Link>
                 <Link to="/order">Order Review</Link>
                 <Link to="/inventory">Manage Inventory here</Link>
-                {/* {loggedUser && <button>Sign out</button>} */}
+                {loggedUser || <span><Link to="/login"><Button 
+                variant="contained"
+                color="primary">
+                Log in</Button></Link>
+                <Link to="/signup"><Button 
+                variant="contained"
+                color="primary">
+                Sign up</Button></Link></span>}
+                {loggedUser && <Button 
+                onClick={signOut} 
+                variant="contained"
+                color="primary">
+                Sign out</Button>}
             </nav>
         </div>
     );
