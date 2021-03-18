@@ -23,7 +23,6 @@ export const UserContext = createContext()
 function App() {
   const [loggedUser, setLoggedUser] = useState(false);
   const [user, setUser] = useState({
-    name:'',
     email:'',
     password:''
   })

@@ -4,7 +4,7 @@ import { Grid, makeStyles, Typography } from '@material-ui/core';
 import React, { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { UserContext } from '../../App';
-import { fbSignInHandler, firebaseInitialize, googleSignInHandler } from '../LoginManager/LoginManager';
+import { fbSignInHandler, firebaseInitialize, githubSignInHandler, googleSignInHandler } from '../LoginManager/LoginManager';
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -52,6 +52,14 @@ const SignUpWithOthers = () => {
 
         })
     }
+    const githubSignIn = () => {
+        githubSignInHandler()
+        .then(res => {
+            setUser(res)
+            setLoggedUser(true);
+            history.replace(from);
+        })
+    }
     const {brandIcons, root} = useStyles();
     return (
         <div className={root}>  
@@ -60,7 +68,7 @@ const SignUpWithOthers = () => {
                 <FontAwesomeIcon onClick={googleSignIn} className={brandIcons} icon={faGoogle} />
                 <FontAwesomeIcon onClick={fbSignIn} className={brandIcons} icon={faFacebookF} />
                 <FontAwesomeIcon className={brandIcons} icon={faTwitter} />
-                <FontAwesomeIcon className={brandIcons} icon={faGithub} />
+                <FontAwesomeIcon onClick={githubSignIn} className={brandIcons} icon={faGithub} />
             </Grid>
         </div>
     );

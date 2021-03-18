@@ -49,6 +49,21 @@ export const fbSignInHandler = () => {
             return errorMessage;
         });
 }
+export const githubSignInHandler = () => {
+    const githubProvider = new firebase.auth.GithubAuthProvider();
+    return firebase.auth().signInWithPopup(githubProvider)
+    .then((res) => {
+    const credential = res.credential;
+    const token = credential.accessToken;
+    const user = res.user;
+    return user
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.email;
+    return errorMessage;
+  });
+}
 export const createUser = (email , password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((res) => {

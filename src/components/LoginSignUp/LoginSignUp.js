@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -44,8 +43,8 @@ export default function LoginSignUp() {
   const location = useLocation();
   const { pathname } = location;
   const { from } = location.state || { from: { pathname: "/" } };
+
   const onBlurHandler = (e) => {
-    console.log(e.target.value);
     const newUser = { ...user };
     newUser[e.target.name] = e.target.value;
     setUser(newUser);
@@ -63,7 +62,7 @@ export default function LoginSignUp() {
     e.preventDefault();
   }
   const signUp = e => {
-    createUser(user.name, user.password)
+    createUser(user.email, user.password)
     .then(res => {
       setUser(res)
       setLoggedUser(true)
