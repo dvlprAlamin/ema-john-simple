@@ -1,12 +1,10 @@
-import './App.css';
+import React from 'react';
 import Header from './components/Header/Header';
 import Shop from './components/Header/Shop/Shop';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useHistory,
-  useLocation
+  Route
 } from "react-router-dom";
 import Inventory from './components/Inventory/Inventory';
 import Order from './components/Order/Order';
@@ -15,7 +13,6 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Proceed from './components/Proceed/Proceed';
 import LoginSignUp from './components/LoginSignUp/LoginSignUp';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import SignUp from './components/LoginSignUp/LoginSignUp';
 import Footer from './components/Footer/Footer';
 import { createContext, useState } from 'react';
 
